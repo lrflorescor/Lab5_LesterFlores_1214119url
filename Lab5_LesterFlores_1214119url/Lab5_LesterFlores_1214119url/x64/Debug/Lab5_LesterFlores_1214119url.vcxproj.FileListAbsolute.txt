@@ -1,0 +1,4 @@
+C:\Users\capit\OneDrive\Escritorio\progra\LAB5\Lab5_LesterFlores_1214119url\Lab5_LesterFlores_1214119url\x64\Debug\Lab5_LesterFlores_1214119url.vcxproj.AssemblyReference.cache
+C:\Users\capit\OneDrive\Escritorio\progra\LAB5\Lab5_LesterFlores_1214119url\Lab5_LesterFlores_1214119url\x64\Debug\Lab5_LesterFlores_1214119url.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\capit\OneDrive\Escritorio\progra\LAB5\Lab5_LesterFlores_1214119url\Lab5_LesterFlores_1214119url\x64\Debug\Lab5LesterFlores1214119url.MyForm.resources
+C:\Users\capit\OneDrive\Escritorio\progra\LAB5\Lab5_LesterFlores_1214119url\Lab5_LesterFlores_1214119url\x64\Debug\Lab5_LesterFlores_1214119url.vcxproj.GenerateResource.cache
