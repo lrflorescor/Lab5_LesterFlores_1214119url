@@ -77,3 +77,98 @@ void Pokedex::QuickSort()
 		AgregarLista(aNumGen[i], aNumNat[i], aNombre[i]);
 	}
 }
+
+void Pokedex::SelectionGen()
+{
+	int n = Count();
+	vector<int> gNumber;
+	vector<int> nNumber;
+	vector<string> Name;
+
+	int cGen, cNat;
+	string cNom;
+
+	for (int i = 0; i < n; i++)
+	{
+		SacarLista(cGen, cNat, cNom);
+		gNumber.push_back(cGen);
+		nNumber.push_back(cNat);
+		Name.push_back(cNom);
+	}
+
+	for (int i = 0; i < n - 1; i++)
+	{
+		int min = i;
+		for (int j = i + 1; j < n; j++)
+		{
+			if (gNumber[min] > gNumber[i])
+			{
+				min = j;
+			}
+		}
+
+		int aux = gNumber[i];
+		gNumber[i] = gNumber[min];
+		gNumber[min] = aux;
+
+		int auxi = nNumber[i];
+		nNumber[i] = nNumber[min];
+		nNumber[min] = auxi;
+
+		string temp = Name[i];
+		Name[i] = Name[min];
+		Name[min] = temp;
+
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		AgregarLista(gNumber[i], nNumber[i], Name[i]);
+	}
+
+}
+
+void Pokedex::ShellNational()
+{
+	int n = Count();
+	vector<int> gNumber;
+	vector<int> nNumber;
+	vector<string> Name;
+
+	int cGen, cNat;
+	string cNom;
+
+	for (int i = 0; i < n; i++)
+	{
+		SacarLista(cGen, cNat, cNom);
+		gNumber.push_back(cGen);
+		nNumber.push_back(cNat);
+		Name.push_back(cNom);
+	}
+
+	for (int gap = n / 2; gap > 0; gap /= 2)
+	{
+		for (int i = gap; i < n; i++)
+		{
+			int Temp = nNumber[i];
+			int Tempo = gNumber[i];
+			string aux = Name[i];
+			int j;
+			for (j = i; j >= gap && nNumber[j - gap] > Temp; j -= gap)
+			{
+				nNumber[j] = nNumber[j - gap];
+				gNumber[j] = gNumber[j - gap];
+				Name[j] = Name[j - gap];
+			}
+			nNumber[j] = Temp;
+			gNumber[j] = Tempo;
+			Name[j] = aux;
+		}
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		AgregarLista(gNumber[i], nNumber[i], Name[i]);
+	}
+}
+
