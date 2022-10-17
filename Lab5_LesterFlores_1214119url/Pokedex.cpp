@@ -219,3 +219,22 @@ void Pokedex::LeerArchivo()
 	}
 
 }
+
+int Pokedex::Count()
+{
+	Node* actual = header;
+	int n = 0;
+
+	if (header != nullptr) {
+		while (actual != nullptr)
+		{
+			n++;
+			actual = actual->next;
+		}
+	}
+	else {
+		return n;
+	}
+	return n;
+
+}
