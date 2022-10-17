@@ -86,10 +86,11 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			this->button2->Location = System::Drawing::Point(26, 127);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(147, 33);
+			this->button2->Size = System::Drawing::Size(170, 33);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"ordenar por nombre";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// button3
 			// 
@@ -169,6 +170,42 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 
 	button1->Visible = false;
+
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	mostrar_txt->Clear();
+	miPokedex.QuickSort();
+
+	int n = miPokedex.Count();
+	vector <string> nombre;
+	vector <int> nGen;
+	vector <int> nNat;
+
+
+	int numGen = 0, numNat = 0;
+	string Name = "";
+
+	for (int i = 0; i < n; i++)
+	{
+		miPokedex.SacarLista(numGen, numNat, Name);
+		nGen.push_back(numGen);
+		nNat.push_back(numNat),
+			nombre.push_back(Name);
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		String^ aNumGen = gcnew String((nGen[i]).ToString());
+		String^ aNumNat = gcnew String((nNat[i]).ToString());
+		String^ Name = gcnew String(nombre[i].c_str());
+		mostrar_txt->Text = aNumGen + " - " + aNumNat + " - " + Name + "\n" + mostrar_txt->Text;
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		miPokedex.AgregarLista(nGen[i], nNat[i], nombre[i]);
+	}
 
 }
 };
