@@ -65,6 +65,7 @@ namespace Lab5LesterFlores1214119url {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -74,7 +75,7 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(26, 80);
+			this->button1->Location = System::Drawing::Point(468, 203);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(147, 41);
 			this->button1->TabIndex = 0;
@@ -84,7 +85,7 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(26, 127);
+			this->button2->Location = System::Drawing::Point(468, 300);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(170, 33);
 			this->button2->TabIndex = 1;
@@ -94,7 +95,7 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(26, 166);
+			this->button3->Location = System::Drawing::Point(468, 339);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(147, 31);
 			this->button3->TabIndex = 2;
@@ -104,7 +105,7 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(26, 203);
+			this->button4->Location = System::Drawing::Point(468, 250);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(147, 29);
 			this->button4->TabIndex = 3;
@@ -114,9 +115,9 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			// mostrar_txt
 			// 
-			this->mostrar_txt->Location = System::Drawing::Point(179, 80);
+			this->mostrar_txt->Location = System::Drawing::Point(69, 117);
 			this->mostrar_txt->Name = L"mostrar_txt";
-			this->mostrar_txt->Size = System::Drawing::Size(139, 131);
+			this->mostrar_txt->Size = System::Drawing::Size(241, 160);
 			this->mostrar_txt->TabIndex = 4;
 			this->mostrar_txt->Text = L"";
 			// 
@@ -124,7 +125,8 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(330, 289);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->ClientSize = System::Drawing::Size(752, 428);
 			this->Controls->Add(this->mostrar_txt);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
