@@ -238,3 +238,203 @@ int Pokedex::Count()
 	return n;
 
 }
+
+int Pokedex::fStringtInt(char c)
+{
+	switch (c)
+	{
+	case 'A':
+		return 1;
+		break;
+	case 'a':
+		return 1;
+		break;
+
+	case 'B':
+		return 2;
+		break;
+	case 'b':
+		return 2;
+		break;
+
+	case 'C':
+		return 3;
+		break;
+	case 'c':
+		return 3;
+		break;
+
+	case 'D':
+		return 4;
+		break;
+	case 'd':
+		return 4;
+		break;
+
+	case 'E':
+		return 5;
+		break;
+	case 'e':
+		return 5;
+		break;
+
+	case 'F':
+		return 6;
+		break;
+	case 'f':
+		return 6;
+		break;
+
+	case 'G':
+		return 7;
+		break;
+	case 'g':
+		return 7;
+		break;
+
+	case 'H':
+		return 8;
+		break;
+	case 'h':
+		return 8;
+		break;
+
+	case 'I':
+		return 9;
+		break;
+	case 'i':
+		return 9;
+		break;
+
+	case 'J':
+		return 10;
+		break;
+	case 'j':
+		return 10;
+		break;
+
+	case 'K':
+		return 11;
+		break;
+	case 'k':
+		return 11;
+		break;
+
+	case 'L':
+		return 12;
+		break;
+	case 'l':
+		return 12;
+		break;
+
+	case 'M':
+		return 13;
+		break;
+	case 'm':
+		return 13;
+		break;
+
+	case 'N':
+		return 14;
+		break;
+	case 'n':
+		return 14;
+		break;
+
+	case 'Ñ':
+		return 15;
+		break;
+	case 'ñ':
+		return 15;
+		break;
+
+	case 'O':
+		return 16;
+		break;
+	case 'o':
+		return 16;
+		break;
+
+	case 'P':
+		return 17;
+		break;
+	case 'p':
+		return 17;
+		break;
+
+	case 'Q':
+		return 18;
+		break;
+	case 'q':
+		return 18;
+		break;
+
+	case 'R':
+		return 19;
+		break;
+	case 'r':
+		return 19;
+		break;
+
+	case 'S':
+		return 20;
+		break;
+	case 's':
+		return 20;
+		break;
+
+	case 'T':
+		return 21;
+		break;
+	case 't':
+		return 21;
+		break;
+
+	case 'U':
+		return 22;
+		break;
+	case 'u':
+		return 22;
+		break;
+
+	case 'V':
+		return 23;
+		break;
+	case 'v':
+		return 23;
+		break;
+
+	case 'W':
+		return 24;
+		break;
+	case 'w':
+		return 24;
+		break;
+
+	case 'X':
+		return 25;
+		break;
+	case 'x':
+		return 25;
+		break;
+
+	case 'Y':
+		return 26;
+		break;
+	case 'y':
+		return 26;
+		break;
+
+	case 'Z':
+		return 27;
+		break;
+	case 'z':
+		return 27;
+		break;
+
+	default:
+		char* po = &c;
+		return atoi(po);
+		break;
+	}
+}
