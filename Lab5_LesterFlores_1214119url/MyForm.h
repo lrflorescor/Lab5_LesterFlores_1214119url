@@ -56,7 +56,7 @@ namespace Lab5LesterFlores1214119url {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -100,6 +100,7 @@ namespace Lab5LesterFlores1214119url {
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Ordenar por Nat";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// button4
 			// 
@@ -137,75 +138,112 @@ namespace Lab5LesterFlores1214119url {
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	mostrar_txt->Clear();
-	miPokedex.LeerArchivo();
-	vector<int> NumGene;
-	vector<int> NumNati;
-	vector<string> Nombre;
-	int n = miPokedex.Count();
-	int nG, nN;
-	string N;
+		mostrar_txt->Clear();
+		miPokedex.LeerArchivo();
+		vector<int> NumGene;
+		vector<int> NumNati;
+		vector<string> Nombre;
+		int n = miPokedex.Count();
+		int nG, nN;
+		string N;
 
-	for (int i = 0; i < n; i++)
-	{
-		miPokedex.SacarLista(nG, nN, N);
-		NumGene.push_back(nG);
-		NumNati.push_back(nN);
-		Nombre.push_back(N);
+		for (int i = 0; i < n; i++)
+		{
+			miPokedex.SacarLista(nG, nN, N);
+			NumGene.push_back(nG);
+			NumNati.push_back(nN);
+			Nombre.push_back(N);
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			String^ aNumGen = gcnew String((NumGene[i]).ToString());
+			String^ aNumNat = gcnew String((NumNati[i]).ToString());
+			String^ Name = gcnew String(Nombre[i].c_str());
+			mostrar_txt->Text = mostrar_txt->Text + aNumGen + " - " + aNumNat + " - " + Name + "\n";
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			miPokedex.AgregarLista(NumGene[i], NumNati[i], Nombre[i]);
+		}
+
+		button1->Visible = false;
+
 	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	for (int i = 0; i < n; i++)
-	{
-		String^ aNumGen = gcnew String((NumGene[i]).ToString());
-		String^ aNumNat = gcnew String((NumNati[i]).ToString());
-		String^ Name = gcnew String(Nombre[i].c_str());
-		mostrar_txt->Text = mostrar_txt->Text + aNumGen + " - " + aNumNat + " - " + Name + "\n";
+		mostrar_txt->Clear();
+		miPokedex.QuickSort();
+
+		int n = miPokedex.Count();
+		vector <string> nombre;
+		vector <int> nGen;
+		vector <int> nNat;
+
+
+		int numGen = 0, numNat = 0;
+		string Name = "";
+
+		for (int i = 0; i < n; i++)
+		{
+			miPokedex.SacarLista(numGen, numNat, Name);
+			nGen.push_back(numGen);
+			nNat.push_back(numNat),
+				nombre.push_back(Name);
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			String^ aNumGen = gcnew String((nGen[i]).ToString());
+			String^ aNumNat = gcnew String((nNat[i]).ToString());
+			String^ Name = gcnew String(nombre[i].c_str());
+			mostrar_txt->Text = aNumGen + " - " + aNumNat + " - " + Name + "\n" + mostrar_txt->Text;
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			miPokedex.AgregarLista(nGen[i], nNat[i], nombre[i]);
+		}
+
 	}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	for (int i = 0; i < n; i++)
-	{
-		miPokedex.AgregarLista(NumGene[i], NumNati[i], Nombre[i]);
-	}
-
-	button1->Visible = false;
-
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	mostrar_txt->Clear();
-	miPokedex.QuickSort();
-
-	int n = miPokedex.Count();
-	vector <string> nombre;
-	vector <int> nGen;
-	vector <int> nNat;
+		mostrar_txt->Clear();
+		miPokedex.ShellNational();
 
 
-	int numGen = 0, numNat = 0;
-	string Name = "";
+		int n = miPokedex.Count();
+		vector <string> nombre;
+		vector <int> nGen;
+		vector <int> nNat;
 
-	for (int i = 0; i < n; i++)
-	{
-		miPokedex.SacarLista(numGen, numNat, Name);
-		nGen.push_back(numGen);
-		nNat.push_back(numNat),
-			nombre.push_back(Name);
-	}
 
-	for (int i = 0; i < n; i++)
-	{
-		String^ aNumGen = gcnew String((nGen[i]).ToString());
-		String^ aNumNat = gcnew String((nNat[i]).ToString());
-		String^ Name = gcnew String(nombre[i].c_str());
-		mostrar_txt->Text = aNumGen + " - " + aNumNat + " - " + Name + "\n" + mostrar_txt->Text;
-	}
+		int numGen = 0, numNat = 0;
+		string Name = "";
 
-	for (int i = 0; i < n; i++)
-	{
-		miPokedex.AgregarLista(nGen[i], nNat[i], nombre[i]);
-	}
+		for (int i = 0; i < n; i++)
+		{
+			miPokedex.SacarLista(numGen, numNat, Name);
+			nGen.push_back(numGen);
+			nNat.push_back(numNat),
+				nombre.push_back(Name);
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			String^ aNumGen = gcnew String((nGen[i]).ToString());
+			String^ aNumNat = gcnew String((nNat[i]).ToString());
+			String^ Name = gcnew String(nombre[i].c_str());
+			mostrar_txt->Text = aNumGen + " - " + aNumNat + " - " + Name + "\n" + mostrar_txt->Text;
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			miPokedex.AgregarLista(nGen[i], nNat[i], nombre[i]);
+		}
 
 }
 };
