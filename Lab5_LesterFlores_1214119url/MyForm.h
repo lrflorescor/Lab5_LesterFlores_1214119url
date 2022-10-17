@@ -110,6 +110,7 @@ namespace Lab5LesterFlores1214119url {
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Ordenar por Gen";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// mostrar_txt
 			// 
@@ -244,6 +245,43 @@ namespace Lab5LesterFlores1214119url {
 		{
 			miPokedex.AgregarLista(nGen[i], nNat[i], nombre[i]);
 		}
+
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	mostrar_txt->Clear();
+	miPokedex.SelectionGen();
+
+
+	int n = miPokedex.Count();
+	vector <string> nombre;
+	vector <int> nGen;
+	vector <int> nNat;
+
+
+	int numGen = 0, numNat = 0;
+	string Name = "";
+
+	for (int i = 0; i < n; i++)
+	{
+		miPokedex.SacarLista(numGen, numNat, Name);
+		nGen.push_back(numGen);
+		nNat.push_back(numNat),
+			nombre.push_back(Name);
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		String^ aNumGen = gcnew String((nGen[i]).ToString());
+		String^ aNumNat = gcnew String((nNat[i]).ToString());
+		String^ Name = gcnew String(nombre[i].c_str());
+		mostrar_txt->Text = aNumGen + " - " + aNumNat + " - " + Name + "\n" + mostrar_txt->Text;
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		miPokedex.AgregarLista(nGen[i], nNat[i], nombre[i]);
+	}
 
 }
 };
