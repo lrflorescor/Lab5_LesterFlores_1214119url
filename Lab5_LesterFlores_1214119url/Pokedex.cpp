@@ -172,3 +172,50 @@ void Pokedex::ShellNational()
 	}
 }
 
+void Pokedex::LeerArchivo()
+{
+	string nombre = "lista.txt";
+	ifstream archivo;
+	archivo.open(nombre, ios_base::in);
+
+	vector<int> NumGene;
+	vector<int> NumNati;
+	vector<string> Nombre;
+
+	string linea;
+	char delimitador = ',';
+	int cont = 0, i = 0, n = 0;
+
+	while (archivo.good())
+	{
+		while (getline(archivo, linea, delimitador))
+		{
+
+			if (cont == 0)
+			{
+				NumGene.push_back(atoi(linea.c_str()));
+				cont++;
+			}
+			else if (cont == 1)
+			{
+				NumNati.push_back(atoi(linea.c_str()));
+				cont++;
+			}
+			else if (cont == 2)
+			{
+				Nombre.push_back(linea);
+				cont = 0;
+				i++;
+				n++;
+			}
+
+		}
+	}
+	archivo.close();
+
+	for (int i = 0; i < n; i++)
+	{
+		AgregarLista(NumGene[i], NumNati[i], Nombre[i]);
+	}
+
+}
