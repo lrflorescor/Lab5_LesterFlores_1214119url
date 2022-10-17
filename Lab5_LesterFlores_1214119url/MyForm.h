@@ -74,45 +74,46 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(37, 58);
+			this->button1->Location = System::Drawing::Point(26, 80);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(147, 41);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Generar Lista";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(37, 87);
+			this->button2->Location = System::Drawing::Point(26, 127);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(147, 33);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"button2";
+			this->button2->Text = L"ordenar por nombre";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(37, 116);
+			this->button3->Location = System::Drawing::Point(26, 166);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(147, 31);
 			this->button3->TabIndex = 2;
-			this->button3->Text = L"button3";
+			this->button3->Text = L"Ordenar por Nat";
 			this->button3->UseVisualStyleBackColor = true;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(37, 145);
+			this->button4->Location = System::Drawing::Point(26, 203);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(147, 29);
 			this->button4->TabIndex = 3;
-			this->button4->Text = L"button4";
+			this->button4->Text = L"Ordenar por Gen";
 			this->button4->UseVisualStyleBackColor = true;
 			// 
 			// mostrar_txt
 			// 
-			this->mostrar_txt->Location = System::Drawing::Point(149, 58);
+			this->mostrar_txt->Location = System::Drawing::Point(179, 80);
 			this->mostrar_txt->Name = L"mostrar_txt";
-			this->mostrar_txt->Size = System::Drawing::Size(100, 96);
+			this->mostrar_txt->Size = System::Drawing::Size(139, 131);
 			this->mostrar_txt->TabIndex = 4;
 			this->mostrar_txt->Text = L"";
 			// 
@@ -120,7 +121,7 @@ namespace Lab5LesterFlores1214119url {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(278, 244);
+			this->ClientSize = System::Drawing::Size(330, 289);
 			this->Controls->Add(this->mostrar_txt);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
@@ -135,5 +136,40 @@ namespace Lab5LesterFlores1214119url {
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	mostrar_txt->Clear();
+	miPokedex.LeerArchivo();
+	vector<int> NumGene;
+	vector<int> NumNati;
+	vector<string> Nombre;
+	int n = miPokedex.Count();
+	int nG, nN;
+	string N;
+
+	for (int i = 0; i < n; i++)
+	{
+		miPokedex.SacarLista(nG, nN, N);
+		NumGene.push_back(nG);
+		NumNati.push_back(nN);
+		Nombre.push_back(N);
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		String^ aNumGen = gcnew String((NumGene[i]).ToString());
+		String^ aNumNat = gcnew String((NumNati[i]).ToString());
+		String^ Name = gcnew String(Nombre[i].c_str());
+		mostrar_txt->Text = mostrar_txt->Text + aNumGen + " - " + aNumNat + " - " + Name + "\n";
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		miPokedex.AgregarLista(NumGene[i], NumNati[i], Nombre[i]);
+	}
+
+	button1->Visible = false;
+
+}
 };
 }
